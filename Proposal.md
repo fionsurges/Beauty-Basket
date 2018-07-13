@@ -1,12 +1,12 @@
-##Problem Statement: 
+## Problem Statement: 
 
 I love buying the “hot and new” cosmetic or makeup product on the market. However, I have a lot of cosmetics and makeup products in my bathroom that I forget to use because of the newcomers. On random days, I will look through my cabinets and see an old product I loved and will want to use it, come to find that it has expired. 
 
-##Project Description:
+## Project Description:
 
 Mobile application that allows a user to take a photo of their new product, add information about it (brand, category, date added, expiration date, notes/reviews), and have it stored in their “pantry” that will be categorized by the type of cosmetic and in order of expiration date.
 
-##User Experience:
+## User Experience:
 
 -User opens app and is prompted to set up an account.
 -Upon setting up the account, the user will be asked to provide the following details:
@@ -34,7 +34,7 @@ Mobile application that allows a user to take a photo of their new product, add 
 -Future implementation includes: Optical Character Recognition (OCR) to convert the text of “Directions” from a product label to the form and Image Classification.
 
 
-##Technologies:
+## Technologies:
 
 -React
 -Cordova
