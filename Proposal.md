@@ -37,7 +37,6 @@ Mobile application that allows a user to take a photo of their new product, add 
 ## Technologies:
 
 * React
-* Cordova
 * React Native
 * Node
 * Knex
