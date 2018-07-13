@@ -34,7 +34,7 @@ Mobile application that allows a user to take a photo of their new product in th
 * React Native
 * Node
 * Knex
-* PostgreSQL
+* MySQL
 * Express
 * Chart.js
 * Python 
