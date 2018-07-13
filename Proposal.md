@@ -49,8 +49,8 @@ Mobile application that allows a user to take a photo of their new product in th
     * Keras for Image Classification
 
 ## Future implementations
-    * Location tracking for application to send push notifications when they are in a Beauty store or a department store
-    * Data analysis on their profile of the types products they use, and amount of money spent on the product
-    * Chart showing amount of money spent on products monthly
+* Location tracking for application to send push notifications when they are in a Beauty store or a department store
+* Data analysis on their profile of the types products they use, and amount of money spent on the product
+* Chart showing amount of money spent on products monthly
 
 
