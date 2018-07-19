@@ -23,7 +23,7 @@ export default class Home extends Component {
                 <Title style={{width: '100%', textAlign: 'left'}}>Basket Items:</Title>
                 <Container style={{flex: 1, flexDirection: 'row'}}>
                     <Content>
-                        <Card style={styles.card}>
+                        <Card>
                             <CardItem>
                             <Left>
                                 <Body>
@@ -48,58 +48,80 @@ export default class Home extends Component {
                             </CardItem>
                         </Card>
                     </Content>
-                    <Content>
-                        <Card style={styles.card}>
-                            <CardItem>
-                            <Left>
-                                <Body>
-                                <Text>KIELS Ultra Facial Cream SPF 30</Text>
-                                <Text note>Moisturizer</Text>
-                                </Body>
-                            </Left>
-                            </CardItem>
-                            <CardItem cardBody>
-                            <Image source={require('../assets/Kiehls-Ultra-Facial-Cream-SPF-30.png')} style={{height: 200, width: null, flex: 1,}}/>
-                            </CardItem>
-                            <CardItem>
-                            <Left>
-                                <Button transparent>
-                                <Icon active name="expand" />
-                                <Text>Details</Text>
-                                </Button>
-                            </Left>
-                            <Right>
-                                <Text>Added: 7/15/2018</Text>
-                            </Right>
-                            </CardItem>
-                        </Card>
-                    </Content>
-                    <Content>
-                        <Card style={styles.card}>
-                            <CardItem>
-                            <Left>
-                                <Body>
-                                <Text>KIELS Ultra Facial Cream SPF 30</Text>
-                                <Text note>Moisturizer</Text>
-                                </Body>
-                            </Left>
-                            </CardItem>
-                            <CardItem cardBody>
-                            <Image source={require('../assets/Kiehls-Ultra-Facial-Cream-SPF-30.png')} style={{height: 200, width: null, flex: 1,}}/>
-                            </CardItem>
-                            <CardItem>
-                            <Left>
-                                <Button transparent>
-                                <Icon active name="expand" />
-                                <Text>Details</Text>
-                                </Button>
-                            </Left>
-                            <Right>
-                                <Text>Added: 7/15/2018</Text>
-                            </Right>
-                            </CardItem>
-                        </Card>
-                    </Content>
+                    <Card style={{width: '50%'}}>
+                        <CardItem>
+                        <Left>
+                            <Body>
+                            <Text>KIELS Ultra Facial Cream SPF 30</Text>
+                            <Text note>Moisturizer</Text>
+                            </Body>
+                        </Left>
+                        </CardItem>
+                        <CardItem cardBody>
+                        <Image source={require('../assets/Kiehls-Ultra-Facial-Cream-SPF-30.png')} style={{height: 200, width: null, flex: 1,}}/>
+                        </CardItem>
+                        <CardItem>
+                        <Left>
+                            <Button transparent>
+                            <Icon active name="expand" />
+                            <Text>Details</Text>
+                            </Button>
+                        </Left>
+                        <Right>
+                            <Text>Added: 7/15/2018</Text>
+                        </Right>
+                        </CardItem>
+                    </Card>
+                    </Container>
+                    <Container style={{flex: 1, flexDirection: 'row'}}>
+                    <Card>
+                        <CardItem>
+                        <Left>
+                            <Body>
+                            <Text>KIELS Ultra Facial Cream SPF 30</Text>
+                            <Text note>Moisturizer</Text>
+                            </Body>
+                        </Left>
+                        </CardItem>
+                        <CardItem cardBody>
+                        <Image source={require('../assets/Kiehls-Ultra-Facial-Cream-SPF-30.png')} style={{height: 200, width: null, flex: 1,}}/>
+                        </CardItem>
+                        <CardItem>
+                        <Left>
+                            <Button transparent>
+                            <Icon active name="expand" />
+                            <Text>Details</Text>
+                            </Button>
+                        </Left>
+                        <Right>
+                            <Text>Added: 7/15/2018</Text>
+                        </Right>
+                        </CardItem>
+                    </Card>
+                    <Card>
+                        <CardItem>
+                        <Left>
+                            <Body>
+                            <Text>KIELS Ultra Facial Cream SPF 30</Text>
+                            <Text note>Moisturizer</Text>
+                            </Body>
+                        </Left>
+                        </CardItem>
+                        <CardItem cardBody>
+                        <Image source={require('../assets/Kiehls-Ultra-Facial-Cream-SPF-30.png')} style={{height: 200, width: null, flex: 1,}}/>
+                        </CardItem>
+                        <CardItem>
+                        <Left>
+                            <Button transparent>
+                            <Icon active name="expand" />
+                            <Text>Details</Text>
+                            </Button>
+                        </Left>
+                        <Right>
+                            <Text>Added: 7/15/2018</Text>
+                        </Right>
+                        </CardItem>
+                    </Card>
                 </Container>
                 <Footer>
                     <FooterTab>
@@ -127,6 +149,8 @@ const {width, height} = Dimensions.get('window')
 
 const styles = StyleSheet.create ({
     card: {
-        width: 500,
+        // flex: 1,
+        // flexWrap:"wrap",
+        // width: 500,
     }
 })
