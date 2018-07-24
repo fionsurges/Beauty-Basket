@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, TextInput } from 'react-native'
-import { Container, Header, Left, Body, Right, Title, Content, Card, CardItem, Footer, FooterTab, Button, Icon , Thumbnail} from 'native-base';
+import { Container, Header, Content, Form, Item, Input, Body, Title } from 'native-base';
 
 
 export default class AddItemForm extends React.Component {
@@ -17,16 +17,48 @@ export default class AddItemForm extends React.Component {
 
     render() {
         return (
-        <View style={styles.container}>
-            <TextInput 
-                onChangeText={text => 
-                    this.setState({
-                        name: text
-                })}
-                value={this.state.name}
-                >
-            </TextInput>
-        </View>
+            <Container style={styles.container}>
+                <Header style={{width:'100%'}}>
+                    <Body>
+                        <Title style={{width: '100%'}}>Add an Item</Title>
+                    </Body>
+                </Header>
+                <Container style={{width:'100%'}}>
+                    <Content>
+                    <Form>
+                        <Item>
+                        <Input 
+                            onChangeText={(text) => this.setState({name: text})}
+                            placeholder="Item Name" />
+                        </Item>
+                        <Item>
+                        <Input 
+                            onChangeText={(text) => this.setState({brand: text})}
+                            placeholder="Brand" />
+                        </Item>
+                        <Item>
+                        <Input 
+                            onChangeText={(text) => this.setState({type: text})}
+                            placeholder="Type" />
+                        </Item>
+                        <Item>
+                        <Input 
+                            onChangeText={(text) => this.setState({expiration: text})}
+                            placeholder="Expiration Date (MM/DD/YYYY)" />
+                        </Item>
+                        <Item last>
+                        <Input 
+                            onChangeText={(text) => {
+                                console.log(this.state)
+                                this.setState({imageURL: text})}}
+                            name='imageURL'
+                            value={this.state.imageURL}
+                            placeholder="ImageURL" />
+                        </Item>
+                    </Form>
+                    </Content>
+                </Container>
+            </Container>
         )
     }
 }
@@ -34,8 +66,9 @@ export default class AddItemForm extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        width: '100%',
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-    },
+    }
 })

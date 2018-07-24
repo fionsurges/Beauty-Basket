@@ -42,6 +42,9 @@ export default class Home extends Component {
         const basket = this.state.basket
         const basketLoaded = this.state.loadBasket
         const showItemForm = this.state.showItemForm
+
+        console.log(basket)
+        
         return (
             <ScrollView style={{flex: 1, width:'100%'}}>
                 <Container style={{flex: 1, width:'100%'}}>
@@ -85,18 +88,19 @@ export default class Home extends Component {
                         })}
                 <Footer>
                     <FooterTab>
-                        <Button vertical active>
+                        <Button active>
                         <Icon name="md-basket" />
                         <Text>My Basket</Text>
                         </Button>
-                        <Button vertical>
+                        <Button >
                         <Icon name="camera" />
                         <Text>Camera</Text>
                         </Button>
-                        <Button vertical>
+                        <Button>
                             <Modal 
                                 visible={this.state.showItemForm}
                                 onRequestClose={() => console.warn('this is a close request')}>
+                                {showItemForm ? <AddItemForm />: (null)}
                                 <View style={styles.modalView}>
                                     <TouchableOpacity 
                                         onPress={() => {
@@ -105,8 +109,7 @@ export default class Home extends Component {
                                                 }
                                             )}
                                         }>
-                                        {showItemForm ? <AddItemForm />: (null)}
-                                        <Text style={styles.closeModal}>Add Item</Text>
+                                        <Text style={styles.closeModal}>Add Item!</Text>
                                     </TouchableOpacity>
                                 </View>  
                             </Modal>
