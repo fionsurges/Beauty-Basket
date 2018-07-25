@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, ImageBackground, Button } from 'react-native'
 
 import Home from './Home'
+console.disableYellowBox = true
 
 export default class Welcome extends React.Component {
 
@@ -26,16 +27,13 @@ export default class Welcome extends React.Component {
         const loaded = this.state.welcomePageLoaded
 
         if (!loaded) {
-            return <Home />
+            return <Home key={this.state}/>
         }
 
         return (
             <ImageBackground 
                 style={styles.backgroundImage}
-                source={require('../assets/background.jpg')}>
-                <View style={styles.textBorder}>
-                    <Text style={styles.backgroundText}>{text}</Text>
-                </View>
+                source={require('../assets/background-image.jpg')}>
             </ImageBackground> 
         )
 
@@ -47,35 +45,11 @@ const styles = StyleSheet.create({
         flex: 1, 
     },
 
-    backgroundImageContainer: {
-        position: 'absolute', 
-        top: 0, 
-        left: 0, 
-        width: '100%', 
-        height: '100%',
-    },
-
     backgroundImage: {
         flex: 1,
         position: 'absolute',
         width: '100%',
         height: '100%', 
         justifyContent: 'center',
-    },
-
-    textBorder: {
-        borderRadius: 4,
-        borderWidth: 0.5,
-        borderColor: 'black',
-        backgroundColor: 'rgba(234, 234, 234, 0.94)',
-        width: 275,
-        left: 50,
-    },
-
-    backgroundText : {
-        backgroundColor: 'transparent',
-        textAlign: 'center',
-        fontSize: 30,
-        padding: 40,
     }
 })

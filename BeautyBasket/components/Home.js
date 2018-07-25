@@ -91,23 +91,31 @@ export default class Home extends Component {
                             <View>
                             { image ?
                                 <ImageBackground style={{width:'100%', height:220}} source={{uri: cosmetic.image}}>
-                                    <Text style={styles.cosmeticText}>{cosmetic.name}</Text>
-                                    <Text style={styles.cosmeticText}>{cosmetic.brand}</Text>
-                                    <Text style={styles.cosmeticText}>{cosmetic.type}</Text>
-                                    <Text style={styles.cosmeticText}>{moment(cosmetic.date_added).format('MMM Do YY')}</Text>
-                                    <Text style={styles.cosmeticText}>{cosmetic.expiration_date}</Text>
-                                    <Button onPress={() => this.deleteItem(cosmetic.id)}>
-                                        <Text>Delete</Text>
+                                    <View style={styles.textBox}>
+                                        <View style={{margin: 10}}>
+                                            <Text style={styles.cosmeticName}>{cosmetic.name}</Text>
+                                            <Text style={styles.cosmeticBrand}>{cosmetic.brand}</Text>
+                                            <Text style={styles.cosmeticType}>{cosmetic.type}</Text>
+                                            <Text style={styles.addedText}>Date added: {moment(cosmetic.date_added).format('MMM Do YY')}</Text>
+                                            <Text style={styles.expiringText}>Expires: {cosmetic.expiration_date}</Text>
+                                        </View>
+                                    <Button style={styles.deleteButton} onPress={() => this.deleteItem(cosmetic.id)}>
+                                        <Text style={{marginLeft: 30}}>Delete</Text>
                                     </Button>
-                                </ImageBackground> : <ImageBackground style={{width:'100%', height:220}} source={require('../assets/background.jpg')}>
-                                                        <Text style={styles.cosmeticText}>{cosmetic.name}</Text>
-                                                        <Text style={styles.cosmeticText}>{cosmetic.brand}</Text>
-                                                        <Text style={styles.cosmeticText}>{cosmetic.type}</Text>
-                                                        <Text style={styles.cosmeticText}>{moment(cosmetic.date_added).format('MMM Do YY')}</Text>
-                                                        <Text style={styles.cosmeticText}>{cosmetic.expiration_date}</Text>
-                                                        <Button onPress={() => this.deleteItem(cosmetic.id)}>
-                                                            <Text >Delete</Text>
+                                    </View>
+                                </ImageBackground> : <ImageBackground style={{width:'100%', height:220}} source={require('../assets/default-image.jpg')}>
+                                                        <View style={styles.textBox}>
+                                                            <View style={{margin: 10}}>
+                                                                <Text style={styles.cosmeticName}>{cosmetic.name}</Text>
+                                                                <Text style={styles.cosmeticBrand}>{cosmetic.brand}</Text>
+                                                                <Text style={styles.cosmeticType}>{cosmetic.type}</Text>
+                                                                <Text style={styles.addedText}>Date added: {moment(cosmetic.date_added).format('MMM Do YY')}</Text>
+                                                                <Text style={styles.expiringText}>Expires: {cosmetic.expiration_date}</Text>
+                                                            </View>
+                                                        <Button style={styles.deleteButton} transparent onPress={() => this.deleteItem(cosmetic.id)}>
+                                                            <Text style={{marginLeft: 30}}>Delete</Text>
                                                         </Button>
+                                                        </View>
                                                     </ImageBackground> }
                             )
                         </View>
@@ -155,13 +163,59 @@ const styles = StyleSheet.create ({
         backgroundColor: '#333',
         color: 'white',
         padding: 5,
-        margin: 20
+        margin: 15 
     },
-    cosmeticText: {
+    textBox: {
+        width: '53%',
+        backgroundColor: 'rgba(242, 241, 243, 0.44)',
+        borderRadius: 5,
+        marginTop: 10,
+        margin: 8,
+    },
+    cosmeticName: {
+        opacity: 1,
         fontWeight: 'bold',
-        color: 'white',
-        textShadowColor: '#252525',
+        fontSize: 20,
+        color: '#544661',
         textShadowOffset: {width: 3, height: 3},
         textShadowRadius: 15
+    },
+    cosmeticBrand: {
+        fontWeight: 'bold',
+        fontStyle: 'italic',
+        fontSize: 15,
+        color: '#544661',
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 15
+    },
+    cosmeticType: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        color: '#544661',
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 15
+    },
+    addedText: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        color: '#544661',
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 15
+    },
+    expiringText: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        color: '#544661',
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 10
+    },
+    deleteButton: {
+        backgroundColor: 'rgba(204, 193, 214, 0.71)',
+        marginTop: 30,
+        marginBottom: 20,
+        margin: 10,
+        width: 100,
+        height: 30,
     }
+    
 })
