@@ -65,6 +65,9 @@ export default class AddItemForm extends React.Component {
                         <TouchableOpacity onPress={this.handleNewItemForm} style={styles.button}>
                             <Text style={styles.buttonText}>Add Item!</Text>
                         </TouchableOpacity>
+                        <TouchableOpacity onPress={this.props.closeModal} style={styles.button}>
+                            <Text style={styles.closeText}>Cancel</Text>
+                        </TouchableOpacity>
                     </View>
                 </Container>
             </Container>
@@ -81,6 +84,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     modalView: {
+        flexDirection: 'row',
         height: 150, 
         justifyContent: 'center', 
         alignItems: 'center'
@@ -97,6 +101,12 @@ const styles = StyleSheet.create({
     buttonText : {
         marginTop: 15,
         marginLeft: 16, 
+        fontWeight:'bold', 
+        color: '#544661'
+    },
+    closeText : {
+        marginTop: 15,
+        marginLeft: 25, 
         fontWeight:'bold', 
         color: '#544661'
     }

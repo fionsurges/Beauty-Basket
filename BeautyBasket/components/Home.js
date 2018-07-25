@@ -72,6 +72,12 @@ export default class Home extends Component {
         .then(this.getBasket)
     }
     
+    closeModal = () => {
+        this.setState({
+            showItemForm: false
+        })
+    }
+
     render() {
         
         const basket = this.state.basket
@@ -135,7 +141,7 @@ export default class Home extends Component {
                             <Modal 
                                 visible={this.state.showItemForm}
                                 onRequestClose={() => console.warn('this is a close request')}>
-                                {showItemForm ? <AddItemForm addToBasket={this.addToBasket}/>: (null)}
+                                {showItemForm ? <AddItemForm addToBasket={this.addToBasket} closeModal={this.closeModal}/>: (null)}
                             </Modal>
                             <TouchableOpacity
                                 onPress={this.addItemModal}>
