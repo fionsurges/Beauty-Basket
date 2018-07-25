@@ -96,20 +96,20 @@ export default class Home extends Component {
                                             <Text style={styles.cosmeticName}>{cosmetic.name}</Text>
                                             <Text style={styles.cosmeticBrand}>{cosmetic.brand}</Text>
                                             <Text style={styles.cosmeticType}>{cosmetic.type}</Text>
-                                            <Text style={styles.addedText}>Date added: {moment(cosmetic.date_added).format('MMM Do YY')}</Text>
+                                            <Text style={styles.addedText}>Date added: {moment(cosmetic.date_added).subtract(10, 'days').calendar()}</Text>
                                             <Text style={styles.expiringText}>Expires: {cosmetic.expiration_date}</Text>
                                         </View>
                                     <Button style={styles.deleteButton} onPress={() => this.deleteItem(cosmetic.id)}>
                                         <Text style={{marginLeft: 30}}>Delete</Text>
                                     </Button>
                                     </View>
-                                </ImageBackground> : <ImageBackground style={{width:'100%', height:220}} source={require('../assets/default-image.jpg')}>
+                                </ImageBackground> : <ImageBackground style={{width:'100%', height:220}} source={require('../assets/background.jpg')}>
                                                         <View style={styles.textBox}>
                                                             <View style={{margin: 10}}>
                                                                 <Text style={styles.cosmeticName}>{cosmetic.name}</Text>
                                                                 <Text style={styles.cosmeticBrand}>{cosmetic.brand}</Text>
                                                                 <Text style={styles.cosmeticType}>{cosmetic.type}</Text>
-                                                                <Text style={styles.addedText}>Date added: {moment(cosmetic.date_added).format('MMM Do YY')}</Text>
+                                                                <Text style={styles.addedText}>Date added: {moment(cosmetic.date_added).subtract(10, 'days').calendar()}</Text>
                                                                 <Text style={styles.expiringText}>Expires: {cosmetic.expiration_date}</Text>
                                                             </View>
                                                         <Button style={styles.deleteButton} transparent onPress={() => this.deleteItem(cosmetic.id)}>

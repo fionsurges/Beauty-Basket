@@ -18,7 +18,7 @@ export default class Welcome extends React.Component {
             this.setState({
                 welcomePageLoaded: false
             })
-        }, 3000)
+        }, 2000)
     }
 
     render() {
@@ -33,7 +33,7 @@ export default class Welcome extends React.Component {
         return (
             <ImageBackground 
                 style={styles.backgroundImage}
-                source={require('../assets/background-image.jpg')}>
+                source={require('../assets/default-image.jpg')}>
             </ImageBackground> 
         )
 

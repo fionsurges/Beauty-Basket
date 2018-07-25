@@ -20,10 +20,11 @@ export default class AddItemForm extends React.Component {
             name: this.state.name,
             brand: this.state.brand,
             type: this.state.type,
-            expiration_date: this.state.expiration,
+            expiration_date: this.state.expiration_date,
             imageURL: this.state.imageURL
         }
         this.props.addToBasket(newItem)
+        console.log(newItem)
     }
 
 
@@ -55,14 +56,14 @@ export default class AddItemForm extends React.Component {
                         </Item>
                         <Item last>
                         <Input 
-                            onChangeText={(text) => this.setState({expiration_date: text})}
+                            onChangeText={(text) => {this.setState({expiration_date: text})}}
                             placeholder="Expiration Date" />
                         </Item>
                     </Form>
                     </Content>
                     <View style={styles.modalView}>
-                        <TouchableOpacity onPress={this.handleNewItemForm}>
-                            <Text>Add Item!</Text>
+                        <TouchableOpacity onPress={this.handleNewItemForm} style={styles.button}>
+                            <Text style={styles.buttonText}>Add Item!</Text>
                         </TouchableOpacity>
                     </View>
                 </Container>
@@ -80,15 +81,23 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     modalView: {
-        backgroundColor: '#aaa', 
         height: 150, 
         justifyContent: 'center', 
         alignItems: 'center'
     },
     button: {
-        backgroundColor: '#333',
-        color: 'white',
-        padding: 5,
-        margin: 20
+        backgroundColor: 'rgba(204, 193, 214, 0.71)',
+        marginTop: 30,
+        marginBottom: 20,
+        margin: 10,
+        width: 100,
+        height: 50,
+        borderRadius: 5
+    },
+    buttonText : {
+        marginTop: 15,
+        marginLeft: 16, 
+        fontWeight:'bold', 
+        color: '#544661'
     }
 })
