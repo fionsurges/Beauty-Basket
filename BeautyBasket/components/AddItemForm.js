@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, TextInput } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Container, Header, Content, Form, Item, Input, Body, Title } from 'native-base';
 
 
@@ -10,10 +10,22 @@ export default class AddItemForm extends React.Component {
             name: '',
             brand: '',
             type: '',
-            expiration: '',
-            imageURL: ''
+            expiration_date: '',
+            image: ''
         }
     }
+
+    handleNewItemForm = () => {
+        const newItem = {
+            name: this.state.name,
+            brand: this.state.brand,
+            type: this.state.type,
+            expiration_date: this.state.expiration,
+            imageURL: this.state.imageURL
+        }
+        this.props.addToBasket(newItem)
+    }
+
 
     render() {
         return (
@@ -41,22 +53,18 @@ export default class AddItemForm extends React.Component {
                             onChangeText={(text) => this.setState({type: text})}
                             placeholder="Type" />
                         </Item>
-                        <Item>
-                        <Input 
-                            onChangeText={(text) => this.setState({expiration: text})}
-                            placeholder="Expiration Date (MM/DD/YYYY)" />
-                        </Item>
                         <Item last>
                         <Input 
-                            onChangeText={(text) => {
-                                console.log(this.state)
-                                this.setState({imageURL: text})}}
-                            name='imageURL'
-                            value={this.state.imageURL}
-                            placeholder="ImageURL" />
+                            onChangeText={(text) => this.setState({expiration_date: text})}
+                            placeholder="Expiration Date" />
                         </Item>
                     </Form>
                     </Content>
+                    <View style={styles.modalView}>
+                        <TouchableOpacity onPress={this.handleNewItemForm}>
+                            <Text>Add Item!</Text>
+                        </TouchableOpacity>
+                    </View>
                 </Container>
             </Container>
         )
@@ -70,5 +78,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    modalView: {
+        backgroundColor: '#aaa', 
+        height: 150, 
+        justifyContent: 'center', 
+        alignItems: 'center'
+    },
+    button: {
+        backgroundColor: '#333',
+        color: 'white',
+        padding: 5,
+        margin: 20
     }
 })

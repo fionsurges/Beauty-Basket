@@ -8,7 +8,7 @@ export default class Welcome extends React.Component {
     constructor() {
         super()
         this.state = {
-            welcomePageLoaded: false
+            welcomePageLoaded: true
         }
     }
 
@@ -17,7 +17,7 @@ export default class Welcome extends React.Component {
             this.setState({
                 welcomePageLoaded: false
             })
-        }, 4000)
+        }, 3000)
     }
 
     render() {

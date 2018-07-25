@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Dimensions, Image, ScrollView, Modal, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, ScrollView, Modal, TouchableOpacity, Image, Alert, ImageBackground } from 'react-native'
 import { Container, Header, Left, Body, Right, Title, Content, Card, CardItem, Footer, FooterTab, Button, Icon , Thumbnail} from 'native-base';
-import AddItemForm from './AddItemForm'
 
+import AddItemForm from './AddItemForm'
+import moment from 'moment'
 
 export default class Home extends Component {
 
@@ -11,17 +12,24 @@ export default class Home extends Component {
         this.state = {
             basket: [],
             loadBasket: false,
-            showItemForm: false
+            showItemForm: false,
+            itemForm: {
+                id: 0,
+                name: '',
+                brand: '',
+                type: '',
+                expiration_date: '',
+                imageURL: ''
+            }
         }
     }
 
     componentDidMount() {
-        console.log('hello')
         this.getBasket()
     }
     
     getBasket = () => {
-        fetch('https://beautybasket.herokuapp.com/basket')
+        return fetch('https://beautybasket.herokuapp.com/basket')
             .then(response => response.json())
             .then(basket => {
                 this.setState({
@@ -36,56 +44,75 @@ export default class Home extends Component {
             showItemForm: true
         })
     }
+
+    addToBasket = (newItem) => {
+        fetch('https://beautybasket.herokuapp.com/basket', {
+            method: 'POST',
+            body: JSON.stringify(newItem),
+            headers: ({
+                'content-type': 'application/json'
+            })
+        })
+        .then(response => response.json())
+        .then(this.getBasket)
+        this.setState({
+            showItemForm: false
+            })
+    }
+    
+    deleteItem = (id) => {
+        Alert.alert('Item deleted!')
+
+        fetch(`https://beautybasket.herokuapp.com/basket/${id}`, {
+                    method: 'Delete',
+            })
+
+        .then(response => response.text)
+        .then(response => console.log(response))
+        .then(this.getBasket)
+    }
     
     render() {
         
         const basket = this.state.basket
-        const basketLoaded = this.state.loadBasket
         const showItemForm = this.state.showItemForm
 
-        console.log(basket)
-        
         return (
-            <ScrollView style={{flex: 1, width:'100%'}}>
-                <Container style={{flex: 1, width:'100%'}}>
+            <Container style={{flex: 1, width:'100%'}}>
                     <Header>
                     <Body>
                         <Title style={{width: '100%'}}>Your Beauty Basket</Title>
                     </Body>
                     </Header>
+                <ScrollView style={{width: '100%'}}>
                     {basket.map(cosmetic => {
+                        const image = cosmetic.image
                         return (
-                            <Container style={{flex: 1, flexDirection: 'row'}}>
-                                <Content>
-                                    <Card>
-                                        <CardItem>
-                                        <Left>
-                                            <Body>
-                                            <Text>{cosmetic.name}</Text>
-                                            <Text note>{cosmetic.type}</Text>
-                                            <Text note>{cosmetic.brand}</Text>
-                                            </Body>
-                                        </Left>
-                                        </CardItem>
-                                        <CardItem cardBody>
-                                        <Image source={{uri: `${cosmetic.imageURL}`}} style={{height: 200, width: null, flex: 1,}}/>
-                                        </CardItem>
-                                        <CardItem>
-                                        <Left>
-                                            <Button transparent>
-                                            <Icon active name="expand" />
-                                            <Text>Details</Text>
-                                            </Button>
-                                        </Left>
-                                        <Right>
-                                            <Text>{cosmetic.date_added}</Text>
-                                        </Right>
-                                        </CardItem>
-                                    </Card>
-                                </Content>
-                            </Container>
+                            <View>
+                            { image ?
+                                <ImageBackground style={{width:'100%', height:220}} source={{uri: cosmetic.image}}>
+                                    <Text style={styles.cosmeticText}>{cosmetic.name}</Text>
+                                    <Text style={styles.cosmeticText}>{cosmetic.brand}</Text>
+                                    <Text style={styles.cosmeticText}>{cosmetic.type}</Text>
+                                    <Text style={styles.cosmeticText}>{moment(cosmetic.date_added).format('MMM Do YY')}</Text>
+                                    <Text style={styles.cosmeticText}>{cosmetic.expiration_date}</Text>
+                                    <Button onPress={() => this.deleteItem(cosmetic.id)}>
+                                        <Text>Delete</Text>
+                                    </Button>
+                                </ImageBackground> : <ImageBackground style={{width:'100%', height:220}} source={require('../assets/background.jpg')}>
+                                                        <Text style={styles.cosmeticText}>{cosmetic.name}</Text>
+                                                        <Text style={styles.cosmeticText}>{cosmetic.brand}</Text>
+                                                        <Text style={styles.cosmeticText}>{cosmetic.type}</Text>
+                                                        <Text style={styles.cosmeticText}>{moment(cosmetic.date_added).format('MMM Do YY')}</Text>
+                                                        <Text style={styles.cosmeticText}>{cosmetic.expiration_date}</Text>
+                                                        <Button onPress={() => this.deleteItem(cosmetic.id)}>
+                                                            <Text >Delete</Text>
+                                                        </Button>
+                                                    </ImageBackground> }
                             )
-                        })}
+                        </View>
+                        )})}
+                </ScrollView>
                 <Footer>
                     <FooterTab>
                         <Button active>
@@ -100,18 +127,7 @@ export default class Home extends Component {
                             <Modal 
                                 visible={this.state.showItemForm}
                                 onRequestClose={() => console.warn('this is a close request')}>
-                                {showItemForm ? <AddItemForm />: (null)}
-                                <View style={styles.modalView}>
-                                    <TouchableOpacity 
-                                        onPress={() => {
-                                            this.setState({
-                                                showItemForm: false
-                                                }
-                                            )}
-                                        }>
-                                        <Text style={styles.closeModal}>Add Item!</Text>
-                                    </TouchableOpacity>
-                                </View>  
+                                {showItemForm ? <AddItemForm addToBasket={this.addToBasket}/>: (null)}
                             </Modal>
                             <TouchableOpacity
                                 onPress={this.addItemModal}>
@@ -122,7 +138,6 @@ export default class Home extends Component {
                     </FooterTab>
                 </Footer>
             </Container>
-        </ScrollView>
         )
     }
 }
@@ -141,5 +156,12 @@ const styles = StyleSheet.create ({
         color: 'white',
         padding: 5,
         margin: 20
+    },
+    cosmeticText: {
+        fontWeight: 'bold',
+        color: 'white',
+        textShadowColor: '#252525',
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 15
     }
 })
