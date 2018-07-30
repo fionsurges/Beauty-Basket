@@ -12,10 +12,9 @@ Mobile application that allows a user to:
 - Development: 'npm start'
 
 ## Demo
-
-![BB Demo](https://media.giphy.com/media/4Nk4VLaIMMnDCmil3S/giphy.mp4)
-![BB Demo](https://media.giphy.com/media/Ahw4664BKvY7Rg5IJB/giphy.gif)
-![BB Demo](https://media.giphy.com/media/1yjZL5z9noAnHua8s4/giphy.gif)
+![BB Demo1](https://media.giphy.com/media/4Nk4VLaIMMnDCmil3S/giphy.gif)
+![BB Demo2](https://media.giphy.com/media/Ahw4664BKvY7Rg5IJB/giphy.gif)
+![BB Demo3](https://media.giphy.com/media/1yjZL5z9noAnHua8s4/giphy.gif)
 
 ## Technologies Used
 HTML/CSS, JavaScript, React Native, NativeBase, Cypress, Knex, Express, Heroku, PostgreSQL, Firebase
