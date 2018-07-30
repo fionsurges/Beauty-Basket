@@ -13,7 +13,9 @@ Mobile application that allows a user to:
 
 ## Demo
 
-![BB Demo](https://im4.ezgif.com/tmp/ezgif-4-af808bc5df.gif)
+![BB Demo](https://media.giphy.com/media/8hZGLFwmXOYKsNjxoA/giphy.gif)
+![BB Demo](https://media.giphy.com/media/Ahw4664BKvY7Rg5IJB/giphy.gif)
+![BB Demo](https://media.giphy.com/media/1yjZL5z9noAnHua8s4/giphy.gif)
 
 ## Technologies Used
 HTML/CSS, JavaScript, React Native, NativeBase, Cypress, Knex, Express, Heroku, PostgreSQL, Firebase
