@@ -11,6 +11,10 @@ Mobile application that allows a user to:
 - 'npm install'
 - Development: 'npm start'
 
+## Demo
+
+![BB Demo](https://imgur.com/a/InOaynG)
+
 ## Technologies Used
 HTML/CSS, JavaScript, React Native, NativeBase, Cypress, Knex, Express, Heroku, PostgreSQL, Firebase
 
