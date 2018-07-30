@@ -13,7 +13,7 @@ Mobile application that allows a user to:
 
 ## Demo
 
-![BB Demo](https://imgur.com/a/InOaynG)
+![BB Demo](https://im4.ezgif.com/tmp/ezgif-4-af808bc5df.gif)
 
 ## Technologies Used
 HTML/CSS, JavaScript, React Native, NativeBase, Cypress, Knex, Express, Heroku, PostgreSQL, Firebase
