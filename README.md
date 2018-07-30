@@ -13,7 +13,7 @@ Mobile application that allows a user to:
 
 ## Demo
 
-![BB Demo](https://media.giphy.com/media/8hZGLFwmXOYKsNjxoA/giphy.gif)
+![BB Demo](https://media.giphy.com/media/xiEasuCpemeQ2vvB0p/giphy.gif)
 ![BB Demo](https://media.giphy.com/media/Ahw4664BKvY7Rg5IJB/giphy.gif)
 ![BB Demo](https://media.giphy.com/media/1yjZL5z9noAnHua8s4/giphy.gif)
 
